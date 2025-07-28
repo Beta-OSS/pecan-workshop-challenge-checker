@@ -1,6 +1,6 @@
 # routes.py
 from flask import Blueprint, request, render_template
-from flags import check_flag
+from flags import flags, check_flag
 
 bp = Blueprint('main', __name__)
 
@@ -10,7 +10,7 @@ def index():
 
 @bp.route("/challenges")
 def challenges():
-    return render_template("challenge.html")
+    return render_template("challenge.html", challenges=flags)
 
 @bp.route("/submit")
 def submit_flag():

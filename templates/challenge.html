@@ -24,6 +24,26 @@
     float: right;
 }
   .result { margin-top: 1em; font-weight: bold; }
+
+  .challenge-list details {
+  margin-bottom: 1em;
+}
+
+.challenge-list button {
+  margin: 0.3em 0;
+  padding: 0.5em 1em;
+  width: 80%;
+  text-align: left;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.challenge-list button:hover {
+  background: #eee;
+}
+
 </style>
 </head>
 <body>
@@ -31,61 +51,73 @@
 <h1>CTF Challenges</h1>
 
 <div class="challenge-list">
-  <button data-challenge-id="challenge1">Challenge 1: Simple Flag</button>
-  <button data-challenge-id="challenge2">Challenge 2: Another Flag</button>
+  {% set categories = {} %}
+  {% for id, ch in challenges.items() %}
+    {% if ch.category not in categories %}
+      {% set _ = categories.update({ch.category: []}) %}
+    {% endif %}
+    {% set _ = categories[ch.category].append((id, ch)) %}
+  {% endfor %}
+
+  {% for category, challenge_list in categories.items() %}
+    <details>
+      <summary><strong>{{ category }}</strong></summary>
+      <ul style="list-style: none; padding-left: 1em;">
+        {% for id, ch in challenge_list %}
+          <li>
+            <button
+              data-challenge-id="{{ id }}"
+              data-name="{{ ch.name | escape }}"
+              data-category="{{ ch.category | escape }}"
+              data-description="{{ ch.description | escape }}">
+              {{ ch.name }}
+            </button>
+          </li>
+        {% endfor %}
+      </ul>
+    </details>
+  {% endfor %}
 </div>
+
+
 
 <div class="flag-form" style="display: none;">
   <h2 id="challenge-title"></h2>
+  <p><strong>Category:</strong> <span id="challenge-category"></span></p>
+  <p id="challenge-description" style="font-style: italic;"></p>
   <input type="text" id="flag-input" placeholder="Enter your flag here" size="30" />
   <button id="submit-flag">Submit Flag</button>
   <div class="result" id="result-message"></div>
 </div>
 
+
 <script>
   const challengeButtons = document.querySelectorAll('.challenge-list button');
-  const flagForm = document.querySelector('.flag-form');
-  const challengeTitle = document.getElementById('challenge-title');
-  const flagInput = document.getElementById('flag-input');
-  const submitButton = document.getElementById('submit-flag');
-  const resultMessage = document.getElementById('result-message');
+const flagForm = document.querySelector('.flag-form');
+const challengeTitle = document.getElementById('challenge-title');
+const challengeCategory = document.getElementById('challenge-category');
+const challengeDesc = document.getElementById('challenge-description');
+const flagInput = document.getElementById('flag-input');
+const submitButton = document.getElementById('submit-flag');
+const resultMessage = document.getElementById('result-message');
 
-  let selectedChallengeId = null;
+let selectedChallengeId = null;
 
-  challengeButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      selectedChallengeId = button.getAttribute('data-challenge-id');
-      challengeTitle.textContent = button.textContent;
-      flagInput.value = '';
-      resultMessage.textContent = '';
-      flagForm.style.display = 'block';
-      flagInput.focus();
-    });
-  });
+challengeButtons.forEach(button => {
+button.addEventListener('click', () => {
+    selectedChallengeId = button.getAttribute('data-challenge-id');
 
-  submitButton.addEventListener('click', () => {
-    const flag = flagInput.value.trim();
-    if (!flag) {
-      resultMessage.textContent = 'Please enter a flag.';
-      resultMessage.style.color = 'red';
-      return;
-    }
+    challengeTitle.textContent = button.getAttribute('data-name');
+    challengeCategory.textContent = button.getAttribute('data-category');
+    challengeDesc.textContent = button.getAttribute('data-description');
 
-    fetch(`/submit?challenge_id=${encodeURIComponent(selectedChallengeId)}&flag=${encodeURIComponent(flag)}`)
-      .then(response => response.text())
-      .then(text => {
-        if (text.toLowerCase().includes('correct')) {
-          resultMessage.style.color = 'green';
-        } else {
-          resultMessage.style.color = 'red';
-        }
-        resultMessage.textContent = text;
-      })
-      .catch(() => {
-        resultMessage.style.color = 'red';
-        resultMessage.textContent = 'Error submitting flag.';
-      });
-  });
+    flagInput.value = '';
+    resultMessage.textContent = '';
+    flagForm.style.display = 'block';
+    flagInput.focus();
+});
+});
+
 </script>
 
 </body>
