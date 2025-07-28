@@ -127,10 +127,10 @@
     fetch(`/submit?challenge_id=${encodeURIComponent(selectedChallengeId)}&flag=${encodeURIComponent(flag)}`)
       .then(response => response.text())
       .then(text => {
-        if (text.toLowerCase().includes('correct')) {
-          resultMessage.style.color = 'green';
-        } else {
+        if (text.toLowerCase().includes('incorrect')) {
           resultMessage.style.color = 'red';
+        } else {
+          resultMessage.style.color = 'green';
         }
         resultMessage.textContent = text;
       })
