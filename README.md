@@ -12,3 +12,4 @@ It acts as a self hosted system which I will run through a CloudFlare tunnel to 
 * Style the app more.
 * Create a landing page and navbar.
 * Add a page for workshops where challenges can be stored for specific workshops. Workshops store challenges that can be toggled on or off for fast access and expandability.
+* I might also add a register sort of page to track points easier, though this would be a basic system that would reset every workshop. Might be an idea to make this a togglable feature too.
