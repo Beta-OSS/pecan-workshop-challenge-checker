@@ -1,0 +1,8 @@
+Home Page
+
+Admin Panel
+    Controls the current active workshop
+
+Challenges
+    Provides a dropdown of all catergories with challenges active in them (and an all tab)
+    Displays challenges and provides challenge submission
