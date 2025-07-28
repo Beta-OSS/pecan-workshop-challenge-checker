@@ -4,52 +4,13 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CTF Challenge Submission</title>
-<style>
-  body { font-family: Arial, sans-serif; margin: 2em; }
-  .challenge-list {
-    width: 30%;
-    float: left;
-  }
-
-  .challenge-list button {
-    display: block;
-    margin: 0.5em 0;
-    padding: 0.6em 1em;
-    font-size: 1em;
-    cursor: pointer;
-  }
-  .flag-form { 
-    margin-top: 1em; 
-    width: 70%;
-    float: right;
-}
-  .result { margin-top: 1em; font-weight: bold; }
-
-  .challenge-list details {
-  margin-bottom: 1em;
-}
-
-.challenge-list button {
-  margin: 0.3em 0;
-  padding: 0.5em 1em;
-  width: 80%;
-  text-align: left;
-  border: 1px solid #ccc;
-  background: #f9f9f9;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.challenge-list button:hover {
-  background: #eee;
-}
-
-</style>
+<link rel="stylesheet" href="{{ url_for('static', filename='challenge.css') }}">
 </head>
 <body>
+{% include 'navbar.html' %}
 
-<h1>CTF Challenges</h1>
-
+<main>
+<h1>Challenges</h1>
 <div class="challenge-list">
   {% set categories = {} %}
   {% for id, ch in challenges.items() %}
@@ -79,8 +40,6 @@
   {% endfor %}
 </div>
 
-
-
 <div class="flag-form" style="display: none;">
   <h2 id="challenge-title"></h2>
   <p><strong>Category:</strong> <span id="challenge-category"></span></p>
@@ -90,55 +49,7 @@
   <div class="result" id="result-message"></div>
 </div>
 
-
-<script>
-  const challengeButtons = document.querySelectorAll('.challenge-list button');
-  const flagForm = document.querySelector('.flag-form');
-  const challengeTitle = document.getElementById('challenge-title');
-  const challengeCategory = document.getElementById('challenge-category');
-  const challengeDescription = document.getElementById('challenge-description');
-  const flagInput = document.getElementById('flag-input');
-  const submitButton = document.getElementById('submit-flag');
-  const resultMessage = document.getElementById('result-message');
-
-  let selectedChallengeId = null;
-
-  challengeButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      selectedChallengeId = button.getAttribute('data-challenge-id');
-      challengeTitle.textContent = button.textContent;
-      challengeCategory.textContent = button.getAttribute('data-category');
-      challengeDescription.textContent = button.getAttribute('data-description');
-      flagInput.value = '';
-      resultMessage.textContent = '';
-      flagForm.style.display = 'block';
-      flagInput.focus();
-    });
-  });
-
-  submitButton.addEventListener('click', () => {
-    const flag = flagInput.value.trim();
-    if (!flag) {
-      resultMessage.textContent = 'Please enter a flag.';
-      resultMessage.style.color = 'red';
-      return;
-    }
-
-    fetch(`/submit?challenge_id=${encodeURIComponent(selectedChallengeId)}&flag=${encodeURIComponent(flag)}`)
-      .then(response => response.text())
-      .then(text => {
-        if (text.toLowerCase().includes('incorrect')) {
-          resultMessage.style.color = 'red';
-        } else {
-          resultMessage.style.color = 'green';
-        }
-        resultMessage.textContent = text;
-      })
-      .catch(() => {
-        resultMessage.style.color = 'red';
-        resultMessage.textContent = 'Error submitting flag.';
-      });
-  });
-</script>
+<script src="{{url_for('static', filename='challenge.js')}}"></script>
+</main>
 </body>
 </html>

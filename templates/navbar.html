@@ -1,2 +1,16 @@
-<!-- Home       Workshop                                    Challenges -->
-<!-- Public     Admin Panel for activating challenges       Dropdown of categories -->
+<!-- templates/navbar.html -->
+<!DOCTYPE html>
+<head>
+<link rel="stylesheet" href="{{ url_for('static', filename='navbar.css') }}">
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="nav-logo">CTF Portal</div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/challenges">Challenges</a></li>
+    </ul>
+  </div>
+</nav>
+</body>
