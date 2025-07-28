@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Welcome to the CTF Portal</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+</head>
+<body>
+
+  {% include 'navbar.html' %}
+
+  <main class="landing-main">
+    <section class="hero">
+      <h1>Welcome to the Workshop Portal</h1>
+      <p class="tagline">Sharpen your skills. Capture the flag. Dominate the leaderboard.</p>
+      <a href="/challenges" class="cta-button">Start Challenges</a>
+    </section>
+  </main>
+
+</body>
+</html>

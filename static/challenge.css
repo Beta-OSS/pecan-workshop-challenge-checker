@@ -1,22 +1,8 @@
-/* General Styles */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f5f7fa;
-    color: #333;
-}
+/* =========================
+   CHALLENGE PAGE STRUCTURE
+   ========================= */
 
-main {
-    padding: 2em;
-}
-
-h1 {
-    text-align: center;
-    margin-bottom: 1em;
-}
-
-/* Layout */
+/* Layout Containers */
 .challenge-list {
     width: 100%;
     max-width: 350px;
@@ -42,7 +28,7 @@ body::after {
     clear: both;
 }
 
-/* Challenge Buttons */
+/* Challenge Buttons & Lists */
 .challenge-list details {
     margin-bottom: 1em;
     background-color: #ffffff;
@@ -64,52 +50,13 @@ body::after {
     width: 93%;
     text-align: left;
     border: none;
-    background: #eef1f5;
-    border-radius: 4px;
     font-size: 0.95em;
-    transition: background 0.3s;
-}
-
-.challenge-list button:hover {
-    background: #dbe3ea;
 }
 
 /* Flag Form */
 .flag-form h2 {
     margin-top: 0;
     font-size: 1.5em;
-}
-
-.flag-form input[type="text"] {
-    width: 80%;
-    padding: 0.6em;
-    font-size: 1em;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    margin-right: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.flag-form button {
-    padding: 0.6em 1.2em;
-    font-size: 1em;
-    background-color: #007acc;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.flag-form button:hover {
-    background-color: #005fa3;
-}
-
-.result {
-    margin-top: 1em;
-    font-weight: bold;
-    font-size: 1.1em;
 }
 
 /* Responsive Design */

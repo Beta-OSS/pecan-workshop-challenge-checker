@@ -1,0 +1,43 @@
+/* ===============
+   LANDING PAGE
+   =============== */
+
+.landing-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    text-align: center;
+    padding: 0 1em;
+}
+
+.hero {
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 0.5em;
+    color: #2c3e50;
+}
+
+.hero .tagline {
+    font-size: 1.3em;
+    color: #555;
+    margin-bottom: 2em;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 0.8em 1.6em;
+    font-size: 1.1em;
+    background-color: #007acc;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #005fa3;
+}

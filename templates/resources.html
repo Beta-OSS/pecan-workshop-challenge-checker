@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CTF Resources</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='resources.css') }}">
+</head>
+<body>
+
+  {% include 'navbar.html' %}
+
+  <main class="resources-page">
+    <h1>Resources</h1>
+
+    <details class="resource-section" open>
+      <summary><strong>Tools</strong></summary>
+      <ul>
+        <li><strong>Burp Suite:</strong> Web application testing and interception</li>
+        <li><strong>Wireshark:</strong> Network traffic analysis</li>
+        <li><strong>CyberChef:</strong> Online data manipulation toolkit</li>
+        <li><strong>Ghidra:</strong> Reverse engineering framework</li>
+        <li><strong>TryHackMe:</strong> Guided CTF-style labs</li>
+      </ul>
+    </details>
+
+    <details class="resource-section">
+      <summary><strong>Workshop Slides</strong></summary>
+      <p>Slide descirption.</p>
+      <iframe 
+        src="https://docs.google.com/presentation/d/e/2PACX-1vQ.../embed?start=false&loop=false&delayms=3000"
+        frameborder="0"
+        width="100%"
+        height="480"
+        allowfullscreen>
+      </iframe>
+      <p><a href="/static/slides/presentation.pptx" download>Download .pptx</a></p>
+    </details>
+
+  </main>
+
+</body>
+</html>

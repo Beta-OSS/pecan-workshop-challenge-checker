@@ -24,3 +24,7 @@ def submit_flag():
         return "Correct"
     else:
         return "Incorrect"
+
+@bp.route('/resources')
+def resources():
+    return render_template('resources.html')
