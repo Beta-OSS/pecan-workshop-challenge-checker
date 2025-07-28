@@ -8,8 +8,7 @@ It acts as a self hosted system which I will run through a CloudFlare tunnel to 
 * Simply use pip to ensure flask is installed, and use the command python app.py. I will add a requirements.txt if the project gets more complicated.
 
 ## Future Plans:
-* Seperate styling and JS from the html files.
-* Style the app more.
-* Create a landing page and navbar.
 * Add a page for workshops where challenges can be stored for specific workshops. Workshops store challenges that can be toggled on or off for fast access and expandability.
 * I might also add a register sort of page to track points easier, though this would be a basic system that would reset every workshop. Might be an idea to make this a togglable feature too.
+
+I did use ChatGPT for quick templating and css which was later edited and refined.
