@@ -1,18 +1,13 @@
 This is a Flask webapp that I plan to use for running challenges in CTF workshops.
 It acts as a self hosted system which I will run through a CloudFlare tunnel to get an ip for it.
 
-Adding Challenges:
-  In the python file flags.py, all you need to do to add challenges to the self host is edit the 
-  flags dictionary to allign with your challenges. File upload is currently not supported though
-  I am working on it. The category feild in the Challenges class will automatically sort challenges
-  on the challenges page into their correct categories. This will be adjusted later to also include
-  a points system using another ordering method to order by points in their respective categories.
+## Adding Challenges:
+* In the python file flags.py, all you need to do to add challenges to the self host is edit the flags dictionary to allign with your challenges. File upload is currently not supported though I am working on it. The category feild in the Challenges class will automatically sort challenges on the challenges page into their correct categories. This will be adjusted later to also include a points system using another ordering method to order by points in their respective categories.
 
-Running the App:
-  Simply use pip to ensure flask is installed, and use the command python app.py. I will add a 
-  requirements.txt if the project gets more complicated.
+## Running the App:
+* Simply use pip to ensure flask is installed, and use the command python app.py. I will add a requirements.txt if the project gets more complicated.
 
-Future Plans:
-  Seperate styling and JS from the html files.
-  Style the app more.
-  Create a landing page and navbar.
+## Future Plans:
+* Seperate styling and JS from the html files.
+* Style the app more.
+* Create a landing page and navbar.
