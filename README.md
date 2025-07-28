@@ -11,3 +11,4 @@ It acts as a self hosted system which I will run through a CloudFlare tunnel to 
 * Seperate styling and JS from the html files.
 * Style the app more.
 * Create a landing page and navbar.
+* Add a page for workshops where challenges can be stored for specific workshops. Workshops store challenges that can be toggled on or off for fast access and expandability.
